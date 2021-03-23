@@ -1,0 +1,6 @@
+# Directories
+build/
+.vscode/
+.git
+
+# Files
