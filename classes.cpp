@@ -70,6 +70,9 @@ int main() {
         Cat mittens;
         Cat::printNumberOfInstances();
 
+        std:: cout << "sizeof class: " << sizeof(Cat) << std::endl;
+        std:: cout << "sizeof instance: " << sizeof(mittens) << std::endl;
+
         Cat* gin = new Cat();
         Cat::printNumberOfInstances();
 

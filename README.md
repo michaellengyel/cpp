@@ -1,4 +1,4 @@
-# C++ Fun and Game
+# C++ Fun and Games
 
 ## bitwise_ops.cpp
 + Bit shift left, Bit shift right, Bitwise AND, Bitwise OR, Bitwise XOR, Bitwise NOT
@@ -8,8 +8,9 @@
 + Static members
 
 ## file_io.cpp
-+ Point
+
+## ineritance.cpp
++ Virtual functions, Pure virtual functions, Abstract classes, Multiple inheritance (ambiguity)
 
 ## std_containers.cpp
-+ Point
 
