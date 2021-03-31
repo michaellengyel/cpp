@@ -6,7 +6,7 @@
 //*****************/***\*********
 //****************/*****\********
 //***************/*******\*******
-//*********Mammel*********Bird*** <- Pure Virtual Class
+//*********Mammal*********Bird*** <- Pure Virtual Class
 //*******/*\*****\*******/*******
 //******/***\*****\*****/********
 //*****/*****\*****\***/*********
@@ -35,22 +35,22 @@ public:
 
 };
 
-// Abstract Mammer class due to pure virtual function
-class Mammel : public Animal
+// Abstract Mammal class due to pure virtual function
+class Mammal : public Animal
 {
 public:
 
-    Mammel() {
-        std::cout << "Mammel C'tor" << std::endl;
+    Mammal() {
+        std::cout << "Mammal C'tor" << std::endl;
     }
 
-    ~Mammel() {
-        std::cout << "Mammel D'tor" << std::endl;
+    ~Mammal() {
+        std::cout << "Mammal D'tor" << std::endl;
     }
 
     virtual void move() override
     {
-        std::cout << "Mammel::move(): Walk" << std::endl;
+        std::cout << "Mammal::move(): Walk" << std::endl;
     }
 
     // Pure virtual function
@@ -81,7 +81,7 @@ public:
     virtual void beak() = 0;
 };
 
-class Cat : public Mammel
+class Cat : public Mammal
 {
 public:
 
@@ -109,7 +109,7 @@ public:
 
 };
 
-class Dog : private Mammel
+class Dog : private Mammal
 {
 public:
 
@@ -123,7 +123,7 @@ public:
         std::cout << "Dog D'tor" << std::endl;
     }
 
-    using Mammel::move;
+    using Mammal::move;
 
     // override keyword checks if virtual function exists in parent class
     void neocortex() override
@@ -132,7 +132,7 @@ public:
     };
 };
 
-class Platypus : public Mammel, public Bird
+class Platypus : public Mammal, public Bird
 {
 public:
 
@@ -145,7 +145,7 @@ public:
     }
 
     // using keyword clarifies which parent classe's move function is inherited by default
-    using Mammel::move;
+    using Mammal::move;
 
     void beak() override
     {
