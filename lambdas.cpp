@@ -1,42 +1,48 @@
 #include <iostream>
-
-// Example function 1.
-int function(int x) {
-    return x;
-}
-
-// Example function 2.
-int function(int x, int y) {
-    return x + y;
-}
-
-// Example function 3.
-int function(int x, int (&f)(int)) {
-    return x + f(x);
-}
-
-// Example function 4. (causes ambiguity!)
-// int function(int x, int (&f)(int, int)) {
-//     return x + f(x, x);
-// }
+#include <vector>
+#include <algorithm>
 
 int main() {
 
-    std::cout << "Function Pointers" << std::endl;
+    std::cout << "Lambdas" << std::endl;
 
-    int (*functionPointer1)(int) = function;                // functionPointer1 stores pointer to Example function 1.
-    int (*functionPointer2)(int, int) = function;           // functionPointer2 stores pointer to Example function 2.
-    int (*functionPointer3)(int, int (&f)(int)) = function; // functionPointer3 stores pointer to Example function 3.
+    // Structure of a Lambda (without and with return type):
+    // []() { }
+    // []() mutable -> T { }
 
-    std::cout << "Address of int function(int x): " << (void*)functionPointer1 << std::endl;
-    std::cout << "Address of int function(int x, int y): " << (void*)functionPointer2 << std::endl;
-    std::cout << "Address of int function(int x, int (&f)(int)): " << (void*)functionPointer3 << std::endl;
+    // Parts of a lambda function:
+    // [] capture list
+    // () argument list
+    // -> T return type (can be omitted)
+    // [] function body
 
+    // Capture List:
+    // [x] capture variable by value x
+    // [&x] capture variable by reference
+    // [=] capture any/all variables is scope by value
+    // [&] capture any/all variables is scope by reference
 
-    // Passing a function pointer to a function (See example function 3.)
-    // Example function 3's input parameter requires that example function 1 is called
-    std::cout << function(5, function) << std::endl;
+    // Argument list:
+    // Follows standard cpp function syntax
 
+    // Return type:
+    // If lambda has a single return, then return type can be omitted
+
+    // Function body:
+    // Follows standard cpp function syntax
+
+    std::vector<int> numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // Lambda function for printing passed into std::for_each function
+    std::for_each(numbers.begin(), numbers.end(), [] (int x) {std::cout << x << " ";});
+    std::cout << std::endl;
+
+    // Lambda function for sorting passed into std::sort
+    std::sort(numbers.begin(), numbers.end(), [] (int x, int y) -> bool {return y < x ? x : y;});
+
+    // Lambda function for printing passed into std::for_each function
+    std::for_each(numbers.begin(), numbers.end(), [] (int x) {std::cout << x << " ";});
+    std::cout << std::endl;
 
     return 0;
 }
