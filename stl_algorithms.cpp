@@ -1,5 +1,5 @@
 #include <iostream>
-#include <algorithms>
+#include <algorithm>
 
 int main() {
 
